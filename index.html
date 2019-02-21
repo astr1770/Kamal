@@ -9,8 +9,8 @@
         html,
         body,
         * {
-            margin: 0;
-            padding: 0;
+            margin: 2px;
+            padding: 2px;
         }
 
         button {
@@ -21,6 +21,7 @@
             color: white;
             border-color: white;
             font-family: fantasy;
+            width: auto;
 
         }
 
@@ -30,6 +31,17 @@
             background-color: beige;
             background-size: contain;
 
+
+        }
+
+        p {
+            font-family: georgia;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: aglet slab;
         }
 
         .valgt {
@@ -42,9 +54,42 @@
         }
 
         #splash {
-            background-image: url(nyforside.jpg);
+            background-image: url(imgs/nyforside.jpg);
             width: 100%;
             height: 400px;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        .forret {
+            background-image: url(imgs/forret.jpg);
+            height: 150px;
+        }
+
+        .hovedret {
+            background-image: url(imgs/mad4.jpg);
+            height: 150px;
+        }
+
+        .dessert {
+            background-image: url(imgs/dessert.jpg);
+            height: 150px;
+        }
+
+        .tilbehor {
+            background-image: url(imgs/sideorders.jpg);
+            height: 150px;
+        }
+
+        .drikkevarer {
+            background-image: url(imgs/drinks2.jpg);
+            height: 150px;
         }
 
     </style>
@@ -56,41 +101,62 @@
 
         <nav>
             <div id="splash"></div>
-            <button id="omos">OM OS</button>
-            <button id="menu">MENU</button>
-            <button id="kontakt">KONTAKT</button>
+            <button id="omos">
+                <h3>OM OS</h3>
+            </button>
+            <button id="menu">
+                <h3>MENU</h3>
+            </button>
+            <button id="kontakt">
+                <h3>KONTAKT</h3>
+            </button>
         </nav>
 
 
-        <div id="omosindhold">
-            <h2></h2>
+        <div id="omosindhold" class="hide">
+            <h2>OM OS</h2>
             <div>
-                <img src="" alt="">
-                <p></p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+                <img src="imgs/mad3.jpg" alt="buffet med indisk mad">
+
             </div>
             <div>
-                <p></p>
-                <img src="" alt="">
+                <h3>Ægte indiske retter</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                <img src="imgs/indisk_pige.jpg" alt="indisk pige">
             </div>
         </div>
 
-        <div id="menuindhold">
+        <div id="menuindhold" class="hide">
+            MENU
             <div id="retmenu">
                 <h2></h2>
-                <button class="filter" data-kategori="forret">Forretter</button>
-                <button class="filter" data-kategori="hovedret">Hovedretter</button>
-                <button class="filter" data-kategori="dessert">Desserter</button>
-                <button class="filter" data-kategori="tilbehør">Tilbehør</button>
-                <button class="filter" data-kategori="drikkevarer">Drikkevarer</button>
+                <div class="filter forret" data-kategori="forret">Forretter</div>
+                <div class="filter hovedret" data-kategori="hovedret">Hovedretter</div>
+                <div class="filter dessert" data-kategori="dessert">Desserter</div>
+                <div class="filter tilbehor" data-kategori="tilbehør">Tilbehør</div>
+                <div class="filter drikkevarer" data-kategori="drikkevarer">Drikkevarer</div>
             </div>
 
             <div id="liste"></div>
 
         </div>
 
-        <div id="kontaktindhold">
-            <img src="" alt="">
-            <p></p>
+        <div id="kontaktindhold" class="hide">
+            KONTAKT
+            <img src="imgs/maps1.png" alt="maps1">
+            <p>Åbningstider:
+                <br>
+                Mandag til torsdag: 13:00 - 22:00 (Køkkenet lukker kl. 20:00)
+                <br>
+                Fredag til Søndag: to Saturday: 10:00 - 23:00 (Køkkenet lukker kl. 20:00)
+                <br>
+                Address:
+                Classensgade 67, København-Ø, 2100.
+                <br>
+                Contact info:
+                Tel: 48424319
+                Email: info@kamal.dk</p>
         </div>
     </header>
 
@@ -105,15 +171,55 @@
         document.addEventListener("DOMContentLoaded", start);
 
         function start() {
-
+            console.log(start);
             let dest = document.querySelector("#liste");
             async function getJson() {
                 let jsonData = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1PnTZaiU0JnN__2Zz30FHrbOGo8cERH7p8EIcredBAJU");
                 retter = await jsonData.json();
-                visMenu();
+                visOmos();
+
             }
 
+            function visOmos() {
+                console.log(visOmos);
 
+                document.querySelector("#omosindhold").classList.remove("hide");
+                document.querySelector("#menuindhold").classList.add("hide");
+                document.querySelector("#kontaktindhold").classList.add("hide");
+
+
+                document.querySelector("#kontakt").addEventListener("click", visKontakt);
+                document.querySelector("#menu").addEventListener("click", visMenu);
+
+            }
+
+            function visMenu() {
+                console.log(visMenu);
+                document.querySelector("#menuindhold").classList.remove("hide");
+                document.querySelector("#omosindhold").classList.add("hide");
+                document.querySelector("#kontaktindhold").classList.add("hide");
+
+
+
+                document.querySelector("#kontakt").addEventListener("click", visKontakt);
+                document.querySelector("#omos").addEventListener("click", visOmos);
+
+
+            }
+
+            function visKontakt() {
+                console.log(visKontakt);
+                document.querySelector("#kontaktindhold").classList.remove("hide");
+                document.querySelector("#menuindhold").classList.add("hide");
+                document.querySelector("#omosindhold").classList.add("hide");
+
+
+                document.querySelector("#omos").addEventListener("click", visOmos);
+                document.querySelector("#menu").addEventListener("click", visMenu);
+
+            }
+
+            getJson();
 
         }
 
