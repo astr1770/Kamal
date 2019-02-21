@@ -6,7 +6,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kamal</title>
     <style>
+        html,
+        body,
+        * {
+            margin: 0;
+            padding: 0;
+        }
 
+        button {
+            font-size: 1rem;
+            margin: 0px 10px 10px 10px;
+            padding: 10px;
+            background-color: rgba(232, 86, 32, 0.79);
+            color: white;
+            border-color: white;
+            font-family: fantasy;
+
+        }
+
+        #liste {
+            display: grid;
+            grid-template-columns: 10fr 10fr 10fr 10fr;
+            background-color: beige;
+            background-size: contain;
+
+        }
+
+        .valgt {
+            background-color: rgb(255, 210, 86);
+            color: white;
+        }
+
+        nav {
+            text-align: center;
+        }
+
+        #splash {
+            background-image: url(nyforside.jpg);
+            width: 100%;
+            height: 400px;
+        }
 
     </style>
 </head>
@@ -15,36 +54,44 @@
 
     <header>
 
-        <div id="splash"></div>
-
         <nav>
-            <div id="omos">
-                <h2></h2>
+            <div id="splash"></div>
+            <button id="omos">OM OS</button>
+            <button id="menu">MENU</button>
+            <button id="kontakt">KONTAKT</button>
+        </nav>
 
-                <div>
-                    <p></p>
-                    <img src="" alt="">
-                </div>
 
-                <div>
-                    <img src="" alt="">
-                    <p></p>
-                </div>
+        <div id="omosindhold">
+            <h2></h2>
+            <div>
+                <img src="" alt="">
+                <p></p>
             </div>
-            <div id="menu">
+            <div>
+                <p></p>
+                <img src="" alt="">
+            </div>
+        </div>
+
+        <div id="menuindhold">
+            <div id="retmenu">
                 <h2></h2>
                 <button class="filter" data-kategori="forret">Forretter</button>
                 <button class="filter" data-kategori="hovedret">Hovedretter</button>
                 <button class="filter" data-kategori="dessert">Desserter</button>
                 <button class="filter" data-kategori="tilbehør">Tilbehør</button>
                 <button class="filter" data-kategori="drikkevarer">Drikkevarer</button>
+            </div>
 
-            </div>
-            <div id="kontakt">
-                <img src="" alt="">
-                <p></p>
-            </div>
-        </nav>
+            <div id="liste"></div>
+
+        </div>
+
+        <div id="kontaktindhold">
+            <img src="" alt="">
+            <p></p>
+        </div>
     </header>
 
 
@@ -53,9 +100,22 @@
 
     </footer>
     <script>
+        let retter = [];
+
+        document.addEventListener("DOMContentLoaded", start);
+
+        function start() {
+
+            let dest = document.querySelector("#liste");
+            async function getJson() {
+                let jsonData = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1PnTZaiU0JnN__2Zz30FHrbOGo8cERH7p8EIcredBAJU");
+                retter = await jsonData.json();
+                visMenu();
+            }
 
 
 
+        }
 
     </script>
 </body>
