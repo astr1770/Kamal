@@ -42,6 +42,7 @@
         h2,
         h3 {
             font-family: aglet slab;
+            text-align: center;
         }
 
         .valgt {
@@ -57,6 +58,7 @@
             background-image: url(imgs/nyforside.jpg);
             width: 100%;
             height: 400px;
+            align-items: center;
         }
 
         .hide {
@@ -69,29 +71,64 @@
 
         .forret {
             background-image: url(imgs/forret.jpg);
-            height: 150px;
+            text-align: center;
+            padding: 80px;
+            color: white;
+            font-size: 1rem;
         }
 
         .hovedret {
             background-image: url(imgs/mad4.jpg);
-            height: 150px;
+            text-align: center;
+            padding: 80px;
+            color: white;
+            font-size: 1rem;
         }
 
         .dessert {
             background-image: url(imgs/dessert.jpg);
-            height: 150px;
+            text-align: center;
+            padding: 80px;
+            color: white;
+            font-size: 1rem;
         }
 
         .tilbehor {
             background-image: url(imgs/sideorders.jpg);
-            height: 150px;
+            text-align: center;
+            padding: 80px;
+            color: white;
+            font-size: 1rem;
         }
 
         .drikkevarer {
             background-image: url(imgs/drinks2.jpg);
-            height: 150px;
+            text-align: center;
+            padding: 80px;
+            color: white;
+            font-size: 1rem;
         }
 
+
+        .facebook {
+            background-color: #53372C;
+            height: 65px;
+            width: 65px;
+            border-radius: 70%;
+            text-align: center;
+            font-size: 2rem;
+            color: white;
+
+        }
+
+        .facebook p {
+            text-align: center;
+        }
+
+        #footer {
+            text-align: center;
+            align-items: center;
+        }
     </style>
 </head>
 
@@ -100,7 +137,9 @@
     <header>
 
         <nav>
-            <div id="splash"></div>
+            <div id="splash">
+                <img src="imgs/logo_medskrift.svg" alt="KAMAL logo">
+            </div>
             <button id="omos">
                 <h3>OM OS</h3>
             </button>
@@ -128,14 +167,24 @@
         </div>
 
         <div id="menuindhold" class="hide">
-            MENU
+            <h2>MENU</h2>
             <div id="retmenu">
                 <h2></h2>
-                <div class="filter forret" data-kategori="forret">Forretter</div>
-                <div class="filter hovedret" data-kategori="hovedret">Hovedretter</div>
-                <div class="filter dessert" data-kategori="dessert">Desserter</div>
-                <div class="filter tilbehor" data-kategori="tilbehør">Tilbehør</div>
-                <div class="filter drikkevarer" data-kategori="drikkevarer">Drikkevarer</div>
+                <div class="filter forret" data-kategori="forret">
+                    <h1>Forretter</h1>
+                </div>
+                <div class="filter hovedret" data-kategori="hovedret">
+                    <h1>Hovedretter</h1>
+                </div>
+                <div class="filter dessert" data-kategori="dessert">
+                    <h1>Desserter</h1>
+                </div>
+                <div class="filter tilbehor" data-kategori="tilbehør">
+                    <h1>Tilbehør</h1>
+                </div>
+                <div class="filter drikkevarer" data-kategori="drikkevarer">
+                    <h1>Drikkevarer</h1>
+                </div>
             </div>
 
             <div id="liste"></div>
@@ -143,7 +192,7 @@
         </div>
 
         <div id="kontaktindhold" class="hide">
-            KONTAKT
+            <h2>KONTAKT</h2>
             <img src="imgs/maps1.png" alt="maps1">
             <p>Åbningstider:
                 <br>
@@ -163,6 +212,20 @@
 
 
     <footer>
+        <div id="footer">
+            <p>
+                Kamal
+                <br>
+                Indian street food
+                <br>
+                <br>
+                Følg os på
+            </p>
+
+            <div class="facebook">
+                <h2>f</h2>
+            </div>
+        </div>
 
     </footer>
     <script>
@@ -199,6 +262,23 @@
                 document.querySelector("#omosindhold").classList.add("hide");
                 document.querySelector("#kontaktindhold").classList.add("hide");
 
+                dest.innerHTML = "";
+                retter.forEach(ret => {
+                    if (filter == ret.kategori) {
+                        let template = `
+                            <article class="ret">
+                                    <h2>${ret.navn}</h2> <br>
+                                    <p>${ret.kort}</p>
+                                    <p>Pris: ${ret.pris}</p>
+                                </article>
+                            `;
+                        dest.insertAdjacentHTML("beforeend", template);
+                        dest.lastElementChild.addEventListener("click", () => {
+                            location.href = "${ret.kategori}.html";
+                        });
+                    }
+                })
+
 
 
                 document.querySelector("#kontakt").addEventListener("click", visKontakt);
@@ -222,7 +302,6 @@
             getJson();
 
         }
-
     </script>
 </body>
 

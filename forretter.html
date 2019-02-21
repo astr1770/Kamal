@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kamal</title>
+    <style>
+        html,
+        body,
+        * {
+            margin: 2px;
+            padding: 2px;
+        }
+
+        button {
+            font-size: 1rem;
+            margin: 0px 10px 10px 10px;
+            padding: 10px;
+            background-color: rgba(232, 86, 32, 0.79);
+            color: white;
+            border-color: white;
+            font-family: fantasy;
+            width: auto;
+
+        }
+
+        #liste {
+            display: grid;
+            grid-template-columns: 10fr 10fr 10fr 10fr;
+            background-color: beige;
+            background-size: contain;
+
+
+        }
+
+        p {
+            font-family: georgia;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: aglet slab;
+            text-align: center;
+        }
+
+        .valgt {
+            background-color: rgb(255, 210, 86);
+            color: white;
+        }
+
+        nav {
+            text-align: center;
+        }
+
+        #splash {
+            background-image: url(imgs/forret.jpg);
+            width: 100%;
+            height: 100px;
+            text-align: center;
+            color: white;
+            padding: 50px 0 0 0;
+            font-size: 1rem;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        img {
+            width: 100%;
+        }
+
+
+
+
+        .facebook {
+            background-color: #53372C;
+            height: 65px;
+            width: 65px;
+            border-radius: 70%;
+            text-align: center;
+            font-size: 2rem;
+            color: white;
+
+        }
+
+        .facebook p {
+            text-align: center;
+        }
+
+        #footer {
+            text-align: center;
+            align-items: center;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+
+        <nav>
+            <div id="splash">
+                <h2>Forretter</h2>
+            </div>
+        </nav>
+    </header>
+
+
+
+    <div id="liste"></div>
+
+
+    <footer>
+        <div id="footer">
+            <p>
+                Kamal
+                <br>
+                Indian street food
+                <br>
+                <br>
+                Følg os på
+            </p>
+
+            <div class="facebook">
+                <h2>f</h2>
+            </div>
+        </div>
+
+    </footer>
+    <script>
+        let retter = [];
+
+        document.addEventListener("DOMContentLoaded", start);
+
+        function start() {
+            console.log(start);
+            let dest = document.querySelector("#liste");
+            async function getJson() {
+                let jsonData = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1PnTZaiU0JnN__2Zz30FHrbOGo8cERH7p8EIcredBAJU");
+                retter = await jsonData.json();
+                visOmos();
+
+            }
+
+
+
+            getJson();
+
+        }
+
+    </script>
+</body>
+
+</html>
