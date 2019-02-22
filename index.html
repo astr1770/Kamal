@@ -6,17 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kamal</title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         html,
         body,
             {
-            margin: auto;
-            padding: 2px;
+            margin: 0;
+            padding: 0;
+
         }
 
         button {
             font-size: 1rem;
             background-color: #CE6E49;
             color: white;
+            cursor: pointer;
+            letter-spacing: 1px;
+            margin: 1px;
 
 
         }
@@ -215,14 +223,11 @@
 
             img {
                 padding: 2vw;
+                width: 80%
             }
 
             p {
                 padding: 2vw;
-            }
-
-            img {
-                width: 80%
             }
 
             #popup {
@@ -233,7 +238,71 @@
                 display: none;
             }
 
+            #map {
+                background-image: url(imgs/maps1.png);
+                width: 100%;
+                height: 50vw;
+                flex-basis: 100px;
+                flex-grow: 2;
+
+            }
+
+            button {
+                font-size: 1.3rem;
+                background-color: #CE6E49;
+                color: white;
+                cursor: pointer;
+                letter-spacing: 2px;
+                margin: 5px;
+
+
+            }
+
         }
+
+        /*--------DESKTOP---------*/
+        @media only screen and (min-width: 851px) {
+
+            #liste {
+                display: grid;
+                grid-template-columns: 10fr 10fr 10fr;
+                background-color: rgba(83, 55, 44, 0.47);
+                background-size: contain;
+                padding: 0px;
+
+            }
+
+            #omindhold {
+                display: flex;
+                flex-wrap: wrap;
+                padding: 2vw;
+            }
+
+
+            .tekst {
+                flex-basis: 400px;
+                flex-grow: 1;
+            }
+
+            .ombillede {
+                flex-basis: 350px;
+                flex-grow: 1;
+            }
+
+            p {
+                font-family: georgia;
+                line-height: 35px;
+                font-size: 1.2rem;
+            }
+
+            #map {
+                background-image: url(imgs/maps1.png);
+                width: 81%;
+                height: 50vw;
+                flex-basis: 500px;
+                flex-grow: 1;
+
+            }
     </style>
 </head>
 
@@ -319,24 +388,26 @@
 
         <div id="kontaktindhold" class="hide">
             <h1>KONTAKT</h1>
-            <div id="koindhold">
-                <div id="map"></div>
+            <div id="omindhold">
 
-                <h3>Åbningstider:</h3>
-                <p>
-                    <br>
-                    Mandag til torsdag: 13:00 - 22:00 (Køkkenet lukker kl. 20:00)
-                    <br>
-                    Fredag til Søndag: to Saturday: 10:00 - 23:00 (Køkkenet lukker kl. 20:00)</p>
-                <br>
-                <br>
-                <br>
-                <h3>Address:</h3>
-                <p>Classensgade 67, København-Ø, 2100.<p>
+                <div class="tekst">
+                    <h3>Åbningstider:</h3>
+                    <p>
                         <br>
-                        <h3>Contact info:</h3>
-                        <p>Tel: 48424319
-                            Email: info@kamal.dk</p>
+                        Mandag til torsdag: 13:00 - 22:00 (Køkkenet lukker kl. 20:00)
+                        <br>
+                        Fredag til Søndag: to Saturday: 10:00 - 23:00 (Køkkenet lukker kl. 20:00)</p>
+                    <br>
+                    <br>
+                    <br>
+                    <h3>Address:</h3>
+                    <p>Classensgade 67, København-Ø, 2100.<p>
+                            <br>
+                            <h3>Contact info:</h3>
+                            <p>Tel: 48424319
+                                Email: info@kamal.dk</p>
+                </div>
+                <div id="map"></div>
 
             </div>
         </div>
