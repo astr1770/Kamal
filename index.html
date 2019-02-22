@@ -72,41 +72,36 @@
         .forret {
             background-image: url(imgs/forret.jpg);
             text-align: center;
-            padding: 80px;
+            padding: 20px;
             color: white;
-            font-size: 1rem;
         }
 
         .hovedret {
             background-image: url(imgs/mad4.jpg);
             text-align: center;
-            padding: 80px;
+            padding: 20px;
             color: white;
-            font-size: 1rem;
         }
 
         .dessert {
             background-image: url(imgs/dessert.jpg);
             text-align: center;
-            padding: 80px;
+            padding: 20px;
             color: white;
-            font-size: 1rem;
         }
 
         .tilbehor {
             background-image: url(imgs/sideorders.jpg);
             text-align: center;
-            padding: 80px;
+            padding: 20px;
             color: white;
-            font-size: 1rem;
         }
 
         .drikkevarer {
             background-image: url(imgs/drinks2.jpg);
             text-align: center;
-            padding: 80px;
+            padding: 20px;
             color: white;
-            font-size: 1rem;
         }
 
 
@@ -129,6 +124,54 @@
             text-align: center;
             align-items: center;
         }
+
+        #popup {
+            width: 100vw;
+            height: 100vw;
+            position: fixed;
+            background-color: rgba(255, 210, 86, 0.29);
+            display: none;
+        }
+
+        #indhold {
+            background-color: beige;
+            width: 70vw;
+            height: auto;
+            margin: auto;
+            text-align: center;
+        }
+
+        #indhold p {
+            text-align: left;
+            margin: 0px 50px 20px 50px;
+
+        }
+
+        #indhold h2 {
+            text-align: left;
+            margin: 0px 50px 0px 50px;
+        }
+
+        #indhold img {
+            width: 50%;
+            margin: 30px 0px;
+        }
+
+        #luk {
+            box-sizing: border-box;
+            text-align: right;
+            padding: 5px 5vw;
+        }
+
+        #luk button {
+            font-size: 1em;
+        }
+
+        article {
+            text-align: left;
+
+        }
+
     </style>
 </head>
 
@@ -151,6 +194,10 @@
             </button>
         </nav>
 
+        <div id="popup">
+            <div id="luk"><button>X</button></div>
+            <div id="indhold"></div>
+        </div>
 
         <div id="omosindhold" class="hide">
             <h2>OM OS</h2>
@@ -170,24 +217,31 @@
             <h2>MENU</h2>
             <div id="retmenu">
                 <h2></h2>
-                <div class="filter forret" data-kategori="forret">
-                    <h1>Forretter</h1>
-                </div>
-                <div class="filter hovedret" data-kategori="hovedret">
-                    <h1>Hovedretter</h1>
-                </div>
-                <div class="filter dessert" data-kategori="dessert">
-                    <h1>Desserter</h1>
-                </div>
-                <div class="filter tilbehor" data-kategori="tilbehør">
-                    <h1>Tilbehør</h1>
-                </div>
-                <div class="filter drikkevarer" data-kategori="drikkevarer">
-                    <h1>Drikkevarer</h1>
-                </div>
+                <button class="filter alle" data-kategori="alle">
+                    <h3>Alle</h3>
+                </button>
+                <button class="filter forret" data-kategori="forret">
+                    <h3>Forretter</h3>
+                </button>
+                <button class="filter hovedret" data-kategori="hovedret">
+                    <h3>Hovedretter</h3>
+                </button>
+
+                <button class="filter dessert" data-kategori="dessert">
+                    <h3>Desserter</h3>
+                </button>
+
+                <button class="filter tilbehor" data-kategori="tilbehør">
+                    <h3>Tilbehør</h3>
+                </button>
+
+                <button class="filter drikkevarer" data-kategori="drikkevarer">
+                    <h3>Drikkevarer</h3>
+                </button>
             </div>
 
             <div id="liste"></div>
+
 
         </div>
 
@@ -230,18 +284,13 @@
     </footer>
     <script>
         let retter = [];
+        let filter = "alle";
 
         document.addEventListener("DOMContentLoaded", start);
 
         function start() {
             console.log(start);
-            let dest = document.querySelector("#liste");
-            async function getJson() {
-                let jsonData = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1PnTZaiU0JnN__2Zz30FHrbOGo8cERH7p8EIcredBAJU");
-                retter = await jsonData.json();
-                visOmos();
-
-            }
+            visOmos();
 
             function visOmos() {
                 console.log(visOmos);
@@ -262,29 +311,61 @@
                 document.querySelector("#omosindhold").classList.add("hide");
                 document.querySelector("#kontaktindhold").classList.add("hide");
 
-                dest.innerHTML = "";
-                retter.forEach(ret => {
-                    if (filter == ret.kategori) {
-                        let template = `
+                let dest = document.querySelector("#liste");
+                async function getJson() {
+                    let jsonData = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1PnTZaiU0JnN__2Zz30FHrbOGo8cERH7p8EIcredBAJU");
+                    retter = await jsonData.json();
+                    visRetter();
+
+                    function visRetter() {
+                        dest.innerHTML = "";
+                        retter.forEach(ret => {
+                            if (filter == "alle" || filter == ret.kategori) {
+                                let template = `
                             <article class="ret">
+                                    <img src="imenu/${ret.billede}.jpg">
                                     <h2>${ret.navn}</h2> <br>
                                     <p>${ret.kort}</p>
                                     <p>Pris: ${ret.pris}</p>
                                 </article>
                             `;
-                        dest.insertAdjacentHTML("beforeend", template);
-                        dest.lastElementChild.addEventListener("click", () => {
-                            location.href = "${ret.kategori}.html";
-                        });
+                                dest.insertAdjacentHTML("beforeend", template);
+                                dest.lastElementChild.addEventListener("click", åbn);
+
+                                function åbn() {
+                                    document.querySelector("#indhold").innerHTML = `
+                                <article class="ret">
+                                    <img src="menu/${ret.billede}.jpg">
+                                    <h2>${ret.navn}</h2> <br>
+                                    <p>${ret.kort}</p>
+                                    <p>Pris: ${ret.pris}</p>
+                                </article>
+                                `;
+                                    document.querySelector("#popup").style.display = "block";
+                                }
+                            }
+                        })
                     }
-                })
+                    document.querySelectorAll(".filter").forEach(elm => {
+                        elm.addEventListener("click", filtrering);
+                    })
+
+                    function filtrering() {
+                        filter = this.getAttribute("data-kategori");
+                        document.querySelector("h2").textContent = this.textContent;
+                        document.querySelectorAll(".filter").forEach(elm => {
+                            elm.classList.remove("valgt");
+                        })
+                        this.classList.add("valgt");
+                        visMenu();
+                    }
+
+                    document.querySelector("#kontakt").addEventListener("click", visKontakt);
+                    document.querySelector("#omos").addEventListener("click", visOmos);
 
 
-
-                document.querySelector("#kontakt").addEventListener("click", visKontakt);
-                document.querySelector("#omos").addEventListener("click", visOmos);
-
-
+                }
+                getJson();
             }
 
             function visKontakt() {
@@ -299,9 +380,10 @@
 
             }
 
-            getJson();
+
 
         }
+
     </script>
 </body>
 
