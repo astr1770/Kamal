@@ -27,7 +27,7 @@
 
         #liste {
             display: grid;
-            grid-template-columns: 10fr 10fr 10fr 10fr;
+            grid-template-columns: 10fr 10fr 10fr;
             background-color: beige;
             background-size: contain;
 
@@ -171,12 +171,14 @@
             text-align: left;
 
         }
-
     </style>
 </head>
 
 <body>
-
+    <div id="popup">
+        <div id="luk"><button>X</button></div>
+        <div id="indhold"></div>
+    </div>
     <header>
 
         <nav>
@@ -194,10 +196,7 @@
             </button>
         </nav>
 
-        <div id="popup">
-            <div id="luk"><button>X</button></div>
-            <div id="indhold"></div>
-        </div>
+
 
         <div id="omosindhold" class="hide">
             <h2>OM OS</h2>
@@ -217,25 +216,25 @@
             <h2>MENU</h2>
             <div id="retmenu">
                 <h2></h2>
-                <button class="filter alle" data-kategori="alle">
+                <button class="filter" data-kategori="alle">
                     <h3>Alle</h3>
                 </button>
-                <button class="filter forret" data-kategori="forret">
+                <button class="filter" data-kategori="forret">
                     <h3>Forretter</h3>
                 </button>
-                <button class="filter hovedret" data-kategori="hovedret">
+                <button class="filter" data-kategori="hovedret">
                     <h3>Hovedretter</h3>
                 </button>
 
-                <button class="filter dessert" data-kategori="dessert">
+                <button class="filter" data-kategori="dessert">
                     <h3>Desserter</h3>
                 </button>
 
-                <button class="filter tilbehor" data-kategori="tilbehør">
+                <button class="filter" data-kategori="tilbehør">
                     <h3>Tilbehør</h3>
                 </button>
 
-                <button class="filter drikkevarer" data-kategori="drikkevarer">
+                <button class="filter" data-kategori="drikkevarer">
                     <h3>Drikkevarer</h3>
                 </button>
             </div>
@@ -323,7 +322,7 @@
                             if (filter == "alle" || filter == ret.kategori) {
                                 let template = `
                             <article class="ret">
-                                    <img src="imenu/${ret.billede}.jpg">
+                                    <img src="menu/${ret.billede}.jpg">
                                     <h2>${ret.navn}</h2> <br>
                                     <p>${ret.kort}</p>
                                     <p>Pris: ${ret.pris}</p>
@@ -359,6 +358,9 @@
                         this.classList.add("valgt");
                         visMenu();
                     }
+                    document.querySelector("#luk button").addEventListener("click", () => {
+                        document.querySelector("#popup").style.display = "none";
+                    })
 
                     document.querySelector("#kontakt").addEventListener("click", visKontakt);
                     document.querySelector("#omos").addEventListener("click", visOmos);
@@ -383,7 +385,6 @@
 
 
         }
-
     </script>
 </body>
 
