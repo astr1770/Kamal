@@ -18,33 +18,10 @@
 
         }
 
-        button {
-            font-size: 1rem;
-            background-color: #CE6E49;
-            color: white;
-            cursor: pointer;
-            letter-spacing: 1px;
-            margin: 1px;
-
-
-        }
-
-        .ret {
-            padding: 1vw;
-        }
-
-        #liste {
-            display: grid;
-            grid-template-columns: 10fr;
-            background-color: rgba(83, 55, 44, 0.47);
-            background-size: contain;
-            padding: 2vw;
-
-        }
-
         p {
             font-family: georgia;
-            line-height: 25px;
+            line-height: 6vw;
+
         }
 
         h1,
@@ -55,59 +32,88 @@
             text-align: center;
         }
 
-        h1 {
-            text-decoration: underline;
-        }
-
-
-        nav {
-            text-align: center;
-        }
-
-        /* mous over link */
-        nav button:hover {
-            color: white;
-            background-color: #53372C;
+        .hide {
+            display: none;
         }
 
         #splash {
             background-image: url(imgs/nyforside.jpg);
             width: 100%;
             height: 300px;
+            text-align: center;
         }
 
         #splash img {
-            width: 100%;
-            height: 300px;
-            margin-left: auto;
-            margin-right: auto;
-            display: block;
+            width: 300px;
+            height: 250px;
+            margin: 6vw;
         }
 
-        .hide {
-            display: none;
-        }
-
-        img {
-            width: 100%;
-        }
-
-        .facebook {
-            background-color: #53372C;
-            height: 65px;
-            width: 65px;
-            border-radius: 70%;
-            font-size: 2rem;
+        button {
+            background-color: #CE6E49;
             color: white;
+            cursor: pointer;
+            letter-spacing: 1px;
+            margin: 0 4px;
+            border: white;
+            width: 20vw;
 
         }
 
-        footer {
-            text-align: center;
+        .ret {
+            padding: 1vw;
+            background-color: rgba(83, 55, 44, 0.3);
+
         }
 
-        footer p {
+        .ret p,
+        h2 {
+            padding: 0 2vw;
+        }
+
+        #retmenu {
             text-align: center;
+            padding: 2vw;
+
+        }
+
+        #retmenu button {
+            background-color: #53372C;
+            width: 30vw;
+            margin: 1px;
+        }
+
+        /* mous over link */
+        #retmenu button:hover {
+            color: white;
+            background-color: #CE6E49;
+        }
+
+        #liste {
+            display: grid;
+            grid-gap: 15px;
+            grid-template-columns: 1fr;
+            background-size: contain;
+            padding: 2vw;
+
+        }
+
+        .ret img {
+            width: 100%;
+            padding: 1px;
+        }
+
+
+        nav {
+            text-align: center;
+
+        }
+
+        /* mous over link */
+        nav button:hover {
+            color: white;
+            background-color: #53372C;
+
         }
 
         #popup {
@@ -128,14 +134,13 @@
 
         #indhold p {
             text-align: left;
-            margin: 0px 50px 20px 50px;
-
-
+            padding: 0 4vw;
+            ;
 
         }
 
         #indhold h2 {
-            text-align: left;
+            text-align: center;
             margin: 0px 50px 0px 50px;
             text-decoration: underline;
         }
@@ -149,132 +154,121 @@
             box-sizing: border-box;
             text-align: right;
             padding: 5px 5vw;
+            font-size: 1rem;
         }
 
         #luk button {
             font-size: 1em;
             background-color: #53372C;
-        }
-
-        #retmenu {
-            text-align: center;
-            padding: 2vw;
-
-        }
-
-        #retmenu button {
-            background-color: #53372C;
-        }
-
-        /* mous over link */
-        #retmenu button:hover {
-            color: white;
-            background-color: #CE6E49;
-        }
-
-        #alt {
-            padding: 5vw;
+            width: 50px;
+            height: 50px;
         }
 
         #map {
-            background-image: url(imgs/maps1.png);
-            width: auto;
-            height: 100vw;
+            flex-basis: 250px;
+            flex-grow: 1;
+        }
+
+        #map img {
+            width: 100%;
+
+        }
+
+        #map .tekst {
+            flex-basis: 100px;
+            flex-grow: 1;
         }
 
         #omindhold .tekst h3 {
             text-align: left;
         }
 
-        /*--------IPAD---------*/
-        @media only screen and (min-width: 725px) {
+        #omindhold img {
+            width: 100%;
+        }
 
-            html,
-            body,
-                {
-                margin: auto;
-                padding: auto;
-            }
+
+        #facebook {
+            background-color: #53372C;
+            height: 65px;
+            width: 65px;
+            border-radius: 70%;
+            color: white;
+            font-size: 1em;
+            margin: auto;
+            line-height: 65px;
+
+        }
+
+        footer {
+            background-color: rgba(83, 55, 44, 0.3);
+            padding: 3vw 0;
+        }
+
+        #footerelement {
+            width: 25vw;
+            margin: auto;
+        }
+
+
+
+        /*--------IPAD---------*/
+        @media only screen and (min-width: 768px) {
 
             #liste {
-                display: grid;
-                grid-template-columns: 10fr 10fr;
-                background-color: rgba(83, 55, 44, 0.47);
-                background-size: contain;
-                padding: 0px;
+                grid-template-columns: 1fr 1fr;
 
-            }
-
-            #alt {
-                padding: 3vw;
             }
 
 
             #omindhold {
                 display: flex;
                 flex-wrap: wrap;
-                padding: 2vw;
             }
 
-
             .tekst {
-                flex-basis: 250px;
+                flex-basis: 300px;
                 flex-grow: 1;
+                padding: 10px;
             }
 
             .ombillede {
-                flex-basis: 250px;
+                flex-basis: 300px;
                 flex-grow: 1;
+                padding: 10px;
             }
 
-            img {
-                padding: 2vw;
-                width: 100%
-            }
-
-            p {
-                padding: 2vw;
+            .ombillede img {
+                width: 100%;
             }
 
             #popup {
                 width: 96vw;
                 height: 135vw;
-                position: fixed;
-                background-color: rgba(83, 55, 44, 0.47);
-                display: none;
             }
 
-            #map {
-                background-image: url(imgs/maps1.png);
-                width: 100%;
-                height: 50vw;
-                flex-basis: 100px;
-                flex-grow: 2;
-
-            }
 
             button {
-                font-size: 1.3rem;
-                background-color: #CE6E49;
-                color: white;
-                cursor: pointer;
-                letter-spacing: 2px;
-                margin: 5px;
+                font-size: 1rem;
+            }
 
+            #splash img {
+                width: 400px;
+                height: 250px;
+                margin: 4vw;
 
             }
 
+            p {
+                line-height: 3vw;
+            }
         }
 
         /*--------DESKTOP---------*/
         @media only screen and (min-width: 851px) {
 
             #liste {
-                display: grid;
-                grid-template-columns: 10fr 10fr 10fr;
-                background-color: rgba(83, 55, 44, 0.47);
-                background-size: contain;
-                padding: 0px;
+                grid-template-columns: 1fr 1fr 1fr;
 
             }
 
@@ -291,24 +285,22 @@
             }
 
             .ombillede {
-                flex-basis: 350px;
+                flex-basis: 400px;
                 flex-grow: 1;
+            }
+
+            #splash img {
+                width: 800px;
+                height: 250px;
+                margin: 2vw;
+
             }
 
             p {
-                font-family: georgia;
-                line-height: 35px;
-                font-size: 1.2rem;
+                line-height: 2vw;
             }
 
-            #map {
-                background-image: url(imgs/maps1.png);
-                width: 81%;
-                height: 50vw;
-                flex-basis: 500px;
-                flex-grow: 1;
-
-            }
+        }
     </style>
 </head>
 
@@ -320,120 +312,116 @@
     <header>
 
         <div id="splash">
-            <img src="imgs/logo_medskrift.svg" alt="KAMAL logo">
+            <a href="#omos"><img src="imgs/logo_medskrift.svg" alt="KAMAL logo"></a>
         </div>
     </header>
-
-    <div id="alt">
-        <nav>
-            <button id="omos">
-                <h3>OM OS</h3>
-            </button>
-            <button id="menu">
-                <h3>MENU</h3>
-            </button>
-            <button id="kontakt">
-                <h3>KONTAKT</h3>
-            </button>
-        </nav>
+    <nav>
+        <button id="omos">
+            <h3>OM OS</h3>
+        </button>
+        <button id="menu">
+            <h3>MENU</h3>
+        </button>
+        <button id="kontakt">
+            <h3>KONTAKT</h3>
+        </button>
+    </nav>
 
 
 
-        <div id="omosindhold" class="hide">
-            <div id="omindhold">
-                <div class="tekst">
-                    <h1>OM OS</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                </div>
-                <div class="ombillede">
-                    <img src="imgs/mad3.jpg" alt="buffet med indisk mad">
-
-                </div>
-                <div class="ombillede">
-                    <img src="imgs/indisk_pige.jpg" alt="indisk pige">
-                </div>
-                <div class="tekst">
-                    <h1>Ægte indiske retter</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                </div>
+    <div id="omosindhold" class="hide">
+        <div id="omindhold">
+            <div class="tekst">
+                <h1>OM OS</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            </div>
+            <div class="ombillede">
+                <img src="imgs/mad3.jpg" alt="buffet med indisk mad">
 
             </div>
-        </div>
-
-        <div id="menuindhold" class="hide">
-            <h1>MENU</h1>
-            <div id="retmenu">
-                <h2></h2>
-                <button class="filter" data-kategori="alle">
-                    <h4>Alle</h4>
-                </button>
-                <button class="filter" data-kategori="forret">
-                    <h4>Forretter</h4>
-                </button>
-                <button class="filter" data-kategori="hovedret">
-                    <h4>Hovedretter</h4>
-                </button>
-
-                <button class="filter" data-kategori="dessert">
-                    <h4>Desserter</h4>
-                </button>
-
-                <button class="filter" data-kategori="tilbehør">
-                    <h4>Tilbehør</h4>
-                </button>
-
-                <button class="filter" data-kategori="drikkevarer">
-                    <h4>Drikkevarer</h4>
-                </button>
+            <div class="ombillede">
+                <img src="imgs/indisk_pige.jpg" alt="indisk pige">
+            </div>
+            <div class="tekst">
+                <h1>Ægte indiske retter</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
             </div>
 
-            <div id="liste"></div>
+        </div>
+    </div>
 
+    <div id="menuindhold" class="hide">
+        <h1>MENU</h1>
+        <div id="retmenu">
+            <h2></h2>
+            <button class="filter" data-kategori="alle">
+                <h4>Alle</h4>
+            </button>
+            <button class="filter" data-kategori="forret">
+                <h4>Forretter</h4>
+            </button>
+            <button class="filter" data-kategori="hovedret">
+                <h4>Hovedretter</h4>
+            </button>
 
+            <button class="filter" data-kategori="dessert">
+                <h4>Desserter</h4>
+            </button>
+
+            <button class="filter" data-kategori="tilbehør">
+                <h4>Tilbehør</h4>
+            </button>
+
+            <button class="filter" data-kategori="drikkevarer">
+                <h4>Drikkevarer</h4>
+            </button>
         </div>
 
-        <div id="kontaktindhold" class="hide">
-            <h1>KONTAKT</h1>
-            <div id="omindhold">
+        <div id="liste"></div>
 
-                <div class="tekst">
-                    <h3>Åbningstider:</h3>
-                    <p>
-                        <br>
-                        Mandag til torsdag: 13:00 - 22:00 (Køkkenet lukker kl. 20:00)
-                        <br>
-                        Fredag til Søndag: to Saturday: 10:00 - 23:00 (Køkkenet lukker kl. 20:00)</p>
-                    <br>
-                    <br>
-                    <br>
-                    <h3>Address:</h3>
-                    <p>Classensgade 67, København-Ø, 2100.<p>
-                            <br>
-                            <h3>Contact info:</h3>
-                            <p>Tel: 48424319
-                                Email: info@kamal.dk</p>
-                </div>
-                <div id="map"></div>
 
+    </div>
+
+    <div id="kontaktindhold" class="hide">
+        <h1>KONTAKT</h1>
+        <div id="omindhold">
+
+            <div class="tekst">
+                <h3>Åbningstider:</h3>
+                <p>
+                    Mandag til torsdag: 13:00 - 22:00 (Køkkenet lukker kl. 20:00)
+                    <br>
+                    Fredag til Søndag: to Saturday: 10:00 - 23:00 (Køkkenet lukker kl. 20:00)</p>
+                <h3>Address:</h3>
+                <p>Classensgade 67, 2100 København Ø<p>
+                        <h3>Contact info:</h3>
+                        <p>Tel: 48424319
+                            Email: info@kamal.dk</p>
             </div>
-        </div>
+            <div id="map">
+                <img src="imgs/maps1.png" alt="maps">
+            </div>
 
+        </div>
     </div>
 
 
     <footer>
-        <div id="footer">
-            <p>
-                Kamal
-                <br>
-                Indian street food
-                <br>
-                <br>
-                Følg os på
-            </p>
+        <div id="footerelement">
+            <div class="tekst">
+                <p>
+                    Kamal
+                    <br>
+                    Indian street food
+                    <br>
+                    Classensgade 67, 2100 København Ø
+                    <br>
+                    Følg os på
+                </p>
+            </div>
 
-            <div class="facebook">
-                <h2>f</h2>
+            <div id="facebook">
+                <h1>f</h1>
             </div>
         </div>
 
@@ -480,7 +468,7 @@
                                 let template = `
                             <article class="ret">
                                     <img src="menu/${ret.billede}.jpg">
-                                    <h2>${ret.id}. ${ret.navn}</h2> <br>
+                                    <h2>${ret.id}. ${ret.navn}</h2>
                                     <p>${ret.kort}</p>
                                     <p>Pris: ${ret.pris},-</p>
                                 </article>
@@ -492,7 +480,7 @@
                                     document.querySelector("#indhold").innerHTML = `
                                 <article class="ret">
                                     <img src="menu/${ret.billede}.jpg">
-                                    <h2>${ret.id}. ${ret.navn}</h2> <br>
+                                    <h2>${ret.id}. ${ret.navn}</h2>
                                     <p>${ret.kort}</p>
                                     <p>Pris: ${ret.pris},-</p>
                                 </article>
